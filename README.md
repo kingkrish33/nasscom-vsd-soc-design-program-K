@@ -400,6 +400,118 @@ The rise propagation delay is the time difference between the input and output s
 - Successfully cloned and explored a CMOS inverter layout.
 - Extracted SPICE files from Magic.
 - Characterized the CMOS inverter using ngspice.
+# **VSD SoC Design Program - Day 4**
+
+## **Pre-layout Timing Analysis and Importance of a Good Clock Tree**
+
+Welcome to **Day 4** of the **VSD SoC Design Program**. On this day, we will focus on **pre-layout timing analysis**, the significance of a well-structured clock tree, and running **Clock Tree Synthesis (CTS)** using **TritonCTS**.
+
+---
+
+## **Theory and Background**
+
+### **What is Timing Analysis?**
+Timing analysis is a critical step in ASIC design that ensures the design meets timing constraints. There are two major types of timing analysis:
+
+1. **Pre-Layout Timing Analysis**: Conducted **before** placement and routing, using ideal clocks.
+2. **Post-Layout Timing Analysis**: Conducted **after** placement and routing, considering actual wire delays.
+
+### **Clock Tree Synthesis (CTS)**
+CTS is essential for distributing the clock signal uniformly to all sequential elements, minimizing **clock skew** and **latency**.
+
+- **Clock Skew**: The difference in arrival times of the clock signal at different flip-flops.
+- **Clock Latency**: The time taken by the clock signal to reach a flip-flop from the clock source.
+
+CTS helps balance clock distribution by inserting **buffers** and **inverters** to achieve better synchronization【95:1†git hub.docx】.
+
+---
+
+## **Objectives for Day 4**
+1. **Integrate a custom inverter cell** into the OpenLANE flow.
+2. **Perform timing analysis using ideal clocks** with OpenSTA.
+3. **Run Clock Tree Synthesis (CTS)** using TritonCTS.
+4. **Perform timing analysis using real clocks** with OpenSTA after CTS【95:15†git hub 2.docx】.
+
+---
+
+## **Step-by-Step Implementation**
+
+### **1. Integrate Custom Inverter Cell into OpenLANE**
+
+Ensure your custom inverter cell meets these conditions:
+- **Input/Output ports** should align with standard cell grid tracks.
+- **Standard cell width and height** should be multiples of the routing pitch【95:15†git hub 2.docx】.
+
+#### **Steps to Open Custom Inverter in Magic**
+```bash
+cd ~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+magic -T sky130A.tech sky130_inv.mag &
+```
+
+Verify the grid settings in Magic:
+```tcl
+grid 0.46um 0.34um 0.23um 0.17um
+```
+
+#### **Save and Export the Custom Inverter Layout**
+```tcl
+save sky130_vsdinv.mag
+lef write
+```
+
+---
+
+### **2. Timing Analysis Using Ideal Clocks (Pre-CTS)**
+
+Perform **Static Timing Analysis (STA)** to identify setup and hold time violations【95:1†git hub.docx】.
+
+```bash
+./flow.tcl -interactive
+package require openlane 0.9
+prep -design picorv32a
+run_synthesis
+report_checks -path_delay min_max -fields {slew trans net cap input_pin}
+report_tns
+report_wns
+```
+
+---
+
+### **3. Run Clock Tree Synthesis (CTS) with TritonCTS**
+
+```tcl
+run_cts
+```
+
+Inspect the clock tree buffers added to reduce clock skew:
+
+```bash
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech \
+  lef read ../../tmp/merged.lef def read picorv32a.cts.def &
+```
+
+---
+
+### **4. Perform Timing Analysis After CTS**
+
+Re-run **STA** after CTS to ensure clock buffers and net delays are correctly analyzed【95:14†git hub 2.docx】.
+
+```tcl
+report_checks -path_delay min_max -fields {slew trans net cap input_pin}
+report_tns
+report_wns
+```
+
+---
+
+## **Key Takeaways from Day 4**
+- Understood **pre-layout and post-layout timing analysis**.
+- Learned the importance of **Clock Tree Synthesis (CTS)**.
+- Ran **STA before and after CTS** to analyze setup/hold time violations.
+- Successfully implemented **clock tree buffering** using TritonCTS【95:5†git hub.docx】.
+
+
+
 
 
 
