@@ -1,6 +1,6 @@
-# VSD SoC Design Program - Day 1
+# VSD-SoC-Design-Program-Day1
 
-## **Day 1: Inception of Open-Source EDA, OpenLANE, and Sky130 PDK**
+## **Day1_Initiation_OpenSourceEDA_OpenLANE_Sky130PDK**
 
 Welcome to Day 1 of the VSD SoC Design and Physical Design using OpenLANE workshop. On this day, we focus on understanding the basics of open-source EDA tools and setting up the environment to synthesize the `picorv32a` design.
 
