@@ -385,7 +385,7 @@ Characterization helps determine the dynamic and static properties of a circuit.
    ```bash
    ls -ltr
    ```
-
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/e5135210f1b8f8d659baa568e1f9260752c1dbae/20.png) 
 ---
 
 ### **5. Perform CMOS Inverter Characterization with ngspice**
@@ -395,18 +395,25 @@ Characterization helps determine the dynamic and static properties of a circuit.
    ```bash
    ngspice sky130_inv.spice
    ```
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/e5135210f1b8f8d659baa568e1f9260752c1dbae/21.png)
+
 
 2. Plot the output signals using:
 
    ```bash
    ngspice 1 -> plt y vs time a
-   ```
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/e5135210f1b8f8d659baa568e1f9260752c1dbae/22.png)
+```
 
 #### **Rise Time Calculation:**
 The rise time is the difference between the time instant when the output signal reaches 80% of VPWR and when it reaches 20% of VPWR.
 
 #### **Rise Propagation Delay Calculation:**
 The rise propagation delay is the time difference between the input and output signals at 50% of VPWR.
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/e5135210f1b8f8d659baa568e1f9260752c1dbae/23.png)
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/e5135210f1b8f8d659baa568e1f9260752c1dbae/24.png)
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/e5135210f1b8f8d659baa568e1f9260752c1dbae/26.png)
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/e5135210f1b8f8d659baa568e1f9260752c1dbae/28.png)
 
 ---
 
@@ -474,7 +481,8 @@ grid 0.46um 0.34um 0.23um 0.17um
 save sky130_vsdinv.mag
 lef write
 ```
-
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/e5135210f1b8f8d659baa568e1f9260752c1dbae/28.png)
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/e5135210f1b8f8d659baa568e1f9260752c1dbae/29.png)
 ---
 
 ### **2. Timing Analysis Using Ideal Clocks (Pre-CTS)**
@@ -490,7 +498,10 @@ report_checks -path_delay min_max -fields {slew trans net cap input_pin}
 report_tns
 report_wns
 ```
-
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/e5135210f1b8f8d659baa568e1f9260752c1dbae/30.png)
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/e5135210f1b8f8d659baa568e1f9260752c1dbae/31.png)
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/e5135210f1b8f8d659baa568e1f9260752c1dbae/Screenshot%202025-02-04%20234907.png)
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/e5135210f1b8f8d659baa568e1f9260752c1dbae/Screenshot%202025-02-04%20234950.png)
 ---
 
 ### **3. Run Clock Tree Synthesis (CTS) with TritonCTS**
@@ -502,7 +513,7 @@ run_cts
 Inspect the clock tree buffers added to reduce clock skew:
 
 ```bash
-magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech \
+magic -T /home/vsduser/Desktop/work/thttps://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/e5135210f1b8f8d659baa568e1f9260752c1dbae/Screenshot%202025-02-04%20234907.pngools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech \
   lef read ../../tmp/merged.lef def read picorv32a.cts.def &
 ```
 
