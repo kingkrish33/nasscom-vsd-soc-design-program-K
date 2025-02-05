@@ -346,8 +346,8 @@ Characterization helps determine the dynamic and static properties of a circuit.
 3. Verify the cloned files using:
 
    ```bash
-   ls -ltr
-   ```
+   ls -ltr 
+ - ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/main/19.png) 
 
 ---
 
