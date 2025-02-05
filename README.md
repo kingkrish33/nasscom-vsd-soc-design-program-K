@@ -22,6 +22,10 @@ Sky130 PDK is an open-source Process Design Kit (PDK) provided by SkyWater Techn
 2. Setting up the Docker container for OpenLANE.
 3. Synthesizing the `picorv32a` design.
 4. Flop ratio and DFF percentage calculation.
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/ef792b2959129150b66ba7fea67f9e7cf57deb45/Screenshot%202025-01-27%20151942.png)
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/ef792b2959129150b66ba7fea67f9e7cf57deb45/Screenshot%202025-01-27%20151914.png)
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/ef792b2959129150b66ba7fea67f9e7cf57deb45/3.png)
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/ef792b2959129150b66ba7fea67f9e7cf57deb45/4.png)
 
 ---
 
@@ -52,6 +56,8 @@ Sky130 PDK is an open-source Process Design Kit (PDK) provided by SkyWater Techn
     ```bash
     ./flow.tcl -interactive
     ```
+-![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/ef792b2959129150b66ba7fea67f9e7cf57deb45/5.png)
+-![Image]()
 
 ---
 ## Introduction to ASIC Design
@@ -82,6 +88,8 @@ The **ASIC design flow** is a multi-step process that can be categorized into **
 - **Placement and Routing**: Determining the optimal placement of cells and routing connections between them using tools like OpenLANE.
 - **Physical Verification**: Performing checks like DRC (Design Rule Check) and LVS (Layout vs. Schematic) to ensure the design is manufacturable.
 - **GDSII Generation**: Producing the final GDSII file for fabrication.
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/ef792b2959129150b66ba7fea67f9e7cf57deb45/Screenshot%202025-02-05%20082254.png)
+
 
 ## OpenLANE and Its Role in ASIC Design
 
@@ -109,6 +117,8 @@ The **OpenLANE directory structure** includes the following key components:
   - `sky130A/`: The specific PDK variant for OpenLANE compatibility, containing libraries and technology files.
 - **`tools/`**: Contains the EDA tools required for synthesis, placement, routing, and verification.
 - **`run/`**: Output directory where tool logs, reports, and results are stored after each flow step. Each design has its own `run` folder for easy tracking of progress and results.
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/ef792b2959129150b66ba7fea67f9e7cf57deb45/Screenshot%202025-02-05%20082420.png)
+
 
 ### **2. Load OpenLANE Package and Prepare the Design**
 
@@ -123,8 +133,9 @@ The **OpenLANE directory structure** includes the following key components:
     ```tcl
     prep -design picorv32a
     ```
+-![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/ef792b2959129150b66ba7fea67f9e7cf57deb45/6.png)
 
-> **Note:** After preparation, OpenLANE creates directories like `runs`, `results`, and `logs` for design files and reports.
+>  **Note:** After preparation, OpenLANE creates directories like `runs`, `results`, and `logs` for design files and reports.
 
 ---
 
@@ -135,6 +146,7 @@ Start synthesis using the following command:
 ```tcl
 run_synthesis
 ```
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/ef792b2959129150b66ba7fea67f9e7cf57deb45/8.png)
 
 > OpenLANE will perform logic synthesis and static timing analysis (STA). This step converts RTL code into a gate-level netlist and optimizes it for area, performance, and power.
 
@@ -184,6 +196,8 @@ Floorplanning is the process of defining the physical layout of an ASIC design. 
 Library cells are pre-designed and verified components used in ASIC design. They include logic gates, flip-flops, and other basic components. Using library cells ensures consistency, reduces design time, and improves performance.
 
 ---
+-![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/ef792b2959129150b66ba7fea67f9e7cf57deb45/9.png)
+-![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/ef792b2959129150b66ba7fea67f9e7cf57deb45/10.png)
 
 ### **Key Objectives for Day 2:**
 
@@ -207,7 +221,7 @@ run_floorplan
 > This command initializes the floorplan by placing the functional blocks and routing channels.
 
 ---
-
+-![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/4d0147a37544471c3471389039c5b2af41c3b17f/Screenshot%202025-02-05%20084359.png)
 ### **2. Calculate the Die Area**
 
 After successful completion of the floorplan command, navigate to the results folder and inspect the file `picorv32a.floorplan.def`.
@@ -253,7 +267,7 @@ run_placement
 ```
 
 > This step legally places standard cells within defined rows while considering congestion.
-
+- ![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/b14a611b5754d77d69028a153cf60928521f9b51/Screenshot%202025-02-05%20084606.png)
 ---
 
 ## **Key Takeaways from Day 2:**
@@ -310,8 +324,10 @@ Characterization helps determine the dynamic and static properties of a circuit.
    ```
 
 2. Observe the placement of IO pins around the bottom left-hand corner.
-
+-![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/b14a611b5754d77d69028a153cf60928521f9b51/17.png)
+-![Image](https://github.com/kingkrish33/nasscom-vsd-soc-design-program-K/blob/b14a611b5754d77d69028a153cf60928521f9b51/18.png)
 ---
+
 
 ### **2. Clone CMOS Inverter Standard Cell Design**
 
